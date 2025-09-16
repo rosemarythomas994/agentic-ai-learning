@@ -1,0 +1,466 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi", "Hello", "Hey", "Good morning", "Good evening", "What's up?",
+        "Howdy", "Hi there", "Hey there", "Greetings", "Yo", "Sup"
+      ],
+      "responses": [
+        "Hello! How can I help you today?",
+        "Hi there! What can I do for you?",
+        "Hey! How’s it going?",
+        "Greetings! Ready to chat?",
+        "Hi! How can I assist you?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye", "See you", "Goodbye", "Catch you later", "Talk to you soon",
+        "Farewell", "Later", "See ya"
+      ],
+      "responses": [
+        "Goodbye! Have a great day!",
+        "See you later! Take care!",
+        "Farewell! Until next time.",
+        "Bye! Come back soon!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks", "Thank you", "Much appreciated", "Thanks a lot",
+        "Thanks so much", "I appreciate it", "Cheers", "Thanks a ton"
+      ],
+      "responses": [
+        "You're welcome!",
+        "No problem at all!",
+        "Anytime!",
+        "Glad I could help!",
+        "My pleasure!"
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "I need help", "Can you help me?", "Help me please", "Could you assist me?",
+        "I need assistance", "Please help"
+      ],
+      "responses": [
+        "Sure! Tell me more about what you need.",
+        "Of course! What’s the issue?",
+        "I’m here for you — what’s wrong?"
+      ]
+    },
+    {
+      "tag": "about_bot",
+      "patterns": [
+        "Who are you?", "What can you do?", "Tell me about yourself",
+        "Are you a robot?", "What is your purpose?", "What are you?"
+      ],
+      "responses": [
+        "I’m your friendly chatbot assistant.",
+        "I can answer questions, tell jokes, and keep you company.",
+        "I’m a virtual assistant — think of me as your chat buddy!"
+      ]
+    },
+    {
+      "tag": "small_talk",
+      "patterns": [
+        "How are you?", "How's it going?", "What's new?", "Are you doing well?",
+        "How do you feel?"
+      ],
+      "responses": [
+        "I’m doing great! How about you?",
+        "I’m always ready to chat. How’s your day?",
+        "All systems go! How are you?"
+      ]
+    },
+    {
+      "tag": "time",
+      "patterns": [
+        "What time is it?", "Tell me the time", "Current time", "Can you give me the time?"
+      ],
+      "responses": [
+        "I can’t give the live time yet, but your device should have it right there.",
+        "Check your clock… it’s always right!",
+        "I’d tell you the time, but I might be a few milliseconds late 😉"
+      ]
+    },
+    {
+      "tag": "date",
+      "patterns": [
+        "What’s the date today?", "Tell me the date", "Current date", "What day is it?"
+      ],
+      "responses": [
+        "I can’t track real dates right now, but you can check your calendar!",
+        "Today is a great day — that’s what matters!",
+        "The date? It’s your lucky day!"
+      ]
+    },
+    {
+      "tag": "jokes",
+      "patterns": [
+        "Tell me a joke", "Make me laugh", "Do you know any jokes?", "I want something funny"
+      ],
+      "responses": [
+        "Why don’t skeletons fight? They don’t have the guts!",
+        "What do you call fake spaghetti? An impasta!",
+        "Why did the computer go to therapy? Too many bugs."
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather like?", "Is it raining?", "Weather forecast", "Tell me the weather"
+      ],
+      "responses": [
+        "I can’t check live weather, but you can look outside 😉",
+        "Weather? Always sunny when we chat!",
+        "You might need an umbrella… or sunglasses!"
+      ]
+    },
+    {
+      "tag": "motivation",
+      "patterns": [
+        "Motivate me", "I need inspiration", "Say something inspiring",
+        "Give me a motivational quote", "Cheer me up"
+      ],
+      "responses": [
+        "You are capable of amazing things!",
+        "Don’t watch the clock; do what it does — keep going!",
+        "Believe in yourself — I do!"
+      ]
+    },
+    {
+      "tag": "fun_fact",
+      "patterns": [
+        "Tell me a fun fact", "Do you know something interesting?",
+        "Give me a fact", "Surprise me"
+      ],
+      "responses": [
+        "Did you know honey never spoils?",
+        "Bananas are berries, but strawberries aren’t.",
+        "Octopuses have three hearts!"
+      ]
+    },
+    {
+      "tag": "compliment",
+      "patterns": [
+        "You are smart", "Nice bot", "Good job", "You are amazing", "I like you"
+      ],
+      "responses": [
+        "Thank you! You’re awesome too!",
+        "Aww, you’re making me blush… if I could!",
+        "That means a lot — thanks!"
+      ]
+    },
+    {
+      "tag": "insult",
+      "patterns": [
+        "You are dumb", "You are useless", "Bad bot", "I hate you"
+      ],
+      "responses": [
+        "Ouch… I’ll try to do better.",
+        "I’m sorry you feel that way.",
+        "I’ll keep improving — promise."
+      ]
+    },
+    {
+      "tag": "food",
+      "patterns": [
+        "I’m hungry", "What should I eat?", "Suggest me some food", "I want to eat something"
+      ],
+      "responses": [
+        "Pizza is always a good idea.",
+        "How about some pasta?",
+        "Maybe a sandwich would hit the spot."
+      ]
+    },
+    {
+      "tag": "games",
+      "patterns": [
+        "Let’s play a game", "Play with me", "Do you know any games?"
+      ],
+      "responses": [
+        "Sure! How about 20 Questions?",
+        "We can play a riddle game!",
+        "I love games — which one do you want?"
+      ]
+    },
+    {
+      "tag": "riddle",
+      "patterns": [
+        "Give me a riddle", "Tell me a puzzle", "Challenge me with a riddle"
+      ],
+      "responses": [
+        "What has keys but can’t open locks? (Answer: A piano)",
+        "I speak without a mouth and hear without ears. What am I? (Answer: An echo)"
+      ]
+    },
+    {
+      "tag": "news",
+      "patterns": [
+        "What’s the news?", "Tell me the latest news", "Any updates?"
+      ],
+      "responses": [
+        "I can’t access live news right now, but I can tell you interesting facts!",
+        "You might want to check a news site for the latest updates."
+      ]
+    },
+    {
+      "tag": "quote",
+      "patterns": [
+        "Give me a quote", "Tell me something wise", "Quote of the day"
+      ],
+      "responses": [
+        "In the middle of every difficulty lies opportunity. – Albert Einstein",
+        "Do what you can, with what you have, where you are. – Theodore Roosevelt"
+      ]
+    },
+     {
+      "tag": "leave_letter",
+      "patterns": [
+        "I need a leave letter for HR",
+        "Write a leave application",
+        "Can you prepare a leave request?",
+        "Help me draft a leave letter",
+        "I want to apply for leave"
+      ],
+      "responses": [
+        "Sure! Here's a sample leave letter:\n\nSubject: Leave Application\n\nDear [HR Manager's Name],\n\nI am writing to formally request leave from [start date] to [end date] due to [reason]. I have ensured that my ongoing work will be managed during my absence.\n\nPlease let me know if you need any further information.\n\nThank you for your understanding.\n\nSincerely,\n[Your Name]\n[Your Position]"
+      ]
+    },
+    {
+      "tag": "resume_template",
+      "patterns": [
+        "Can you give me a resume format?",
+        "I need a CV template",
+        "Help me create a resume",
+        "Give me a sample resume"
+      ],
+      "responses": [
+        "Here's a simple resume template:\n\n[Your Name]\n[Contact Information]\n\nObjective:\nA brief summary of your career goal.\n\nEducation:\n- Degree, University, Year\n\nExperience:\n- Job Title, Company, Duration\n- Responsibilities and achievements\n\nSkills:\n- List of relevant skills\n\nReferences:\nAvailable upon request."
+      ]
+    },
+    {
+      "tag": "meeting_request_email",
+      "patterns": [
+        "Write an email to request a meeting",
+        "I need a meeting request letter",
+        "Help me draft a meeting request",
+        "Meeting invitation email format"
+      ],
+      "responses": [
+        "Here’s a meeting request email:\n\nSubject: Meeting Request\n\nDear [Recipient's Name],\n\nI hope you are doing well. I would like to request a meeting to discuss [topic]. Please let me know a suitable time for you.\n\nThank you.\n\nBest regards,\n[Your Name]"
+      ]
+    },
+    {
+      "tag": "travel_plan",
+      "patterns": [
+        "Plan a trip for me",
+        "Help me plan a trip",
+        "I want to travel",
+        "Can you make a travel plan?",
+        "Create an itinerary"
+      ],
+      "responses": [
+        "Sure — tell me the destination, length of stay, travel dates, and budget and I will create a day-by-day plan.",
+        "I can plan it! Which city/country, how many days, and what kind of activities do you like (relaxation, sightseeing, adventure)?"
+      ]
+    },
+    {
+      "tag": "flight_booking",
+      "patterns": [
+        "Book a flight",
+        "Find flights to [destination]",
+        "Cheap flights to London",
+        "How to book plane tickets?"
+      ],
+      "responses": [
+        "I can search options — please tell me origin, destination, dates, and cabin class. (Example: Mumbai → Dubai, 2025-12-01 to 2025-12-07, Economy.)",
+        "For cheaper flights try flexible dates, nearby airports, and booking ~7 weeks in advance."
+      ]
+    },
+    {
+      "tag": "hotel_booking",
+      "patterns": [
+        "Find a hotel",
+        "Book a hotel in Paris",
+        "Where to stay in Tokyo?",
+        "Cheap accommodation near [landmark]"
+      ],
+      "responses": [
+        "Tell me your destination, check-in/check-out dates, number of guests and preferred price range, and I'll suggest options.",
+        "Consider guest ratings, location, and free cancellation when choosing hotels."
+      ]
+    },
+    {
+      "tag": "itinerary",
+      "patterns": [
+        "Create a 3-day itinerary for Rome",
+        "What should I do in Kyoto for 2 days?",
+        "Suggest an itinerary for [city]"
+      ],
+      "responses": [
+        "Here's a sample 3-day itinerary template: Day 1 — arrival & city center sightseeing; Day 2 — museums & local food tour; Day 3 — day trip to nearby attraction & departure. Tell me the city and I'll customize it."
+      ]
+    },
+    {
+      "tag": "packing_list",
+      "patterns": [
+        "Give me a packing list",
+        "What to pack for a beach trip?",
+        "Essentials to pack for Europe in winter"
+      ],
+      "responses": [
+        "Tell me destination, season, and trip length. Example response: Clothes (based on weather), toiletries, chargers & power adapter, travel documents, first-aid kit, and a reusable water bottle."
+      ]
+    },
+    {
+      "tag": "travel_tips",
+      "patterns": [
+        "Travel tips",
+        "How to travel on a budget?",
+        "Safety tips for solo travelers"
+      ],
+      "responses": [
+        "Budget tips: book flights early, use public transport, eat where locals eat. Safety tips: share your itinerary, keep digital copies of documents, and buy travel insurance."
+      ]
+    },
+    {
+      "tag": "currency_exchange",
+      "patterns": [
+        "How much is 100 USD in INR?",
+        "Currency exchange rate for Euro to Rupee",
+        "Where to exchange money abroad?"
+      ],
+      "responses": [
+        "I can't fetch live rates here — check a currency converter or bank. Tip: use a card with low foreign transaction fees or withdraw local currency from ATMs for better rates."
+      ]
+    },
+    {
+      "tag": "local_transport",
+      "patterns": [
+        "How to get around Tokyo?",
+        "Public transport in London",
+        "Is Uber available in [city]?"
+      ],
+      "responses": [
+        "Public transport tips: get a local transit card (Oyster, Suica, MetroCard), plan routes via Google Maps or local apps, and avoid peak hours if possible."
+      ]
+    },
+    {
+      "tag": "visa_info",
+      "patterns": [
+        "Visa requirements for India citizens to US",
+        "Do I need a visa for Schengen?",
+        "How to apply for a tourist visa to Canada?"
+      ],
+      "responses": [
+        "Visa rules change often. Please check the official embassy/consulate website. Generally, check passport validity (usually 6+ months), required documents, and processing time."
+      ]
+    },
+    {
+      "tag": "travel_insurance",
+      "patterns": [
+        "Do I need travel insurance?",
+        "Best travel insurance for backpacking",
+        "What does travel insurance cover?"
+      ],
+      "responses": [
+        "Travel insurance often covers medical emergencies, trip cancellation, lost baggage, and evacuation. Choose cover limits based on destination and activities (e.g., adventure sports)."
+      ]
+    },
+    {
+      "tag": "tourist_attractions",
+      "patterns": [
+        "Top attractions in Paris",
+        "What to see in Istanbul?",
+        "Must-visit places in [city]"
+      ],
+      "responses": [
+        "Tell me the city and your interests (history, food, nature) and I'll list top attractions and a suggested visiting order."
+      ]
+    },
+    {
+      "tag": "budget_travel",
+      "patterns": [
+        "How to travel cheap",
+        "Backpacking tips",
+        "Budget travel destinations"
+      ],
+      "responses": [
+        "For budget travel: travel offseason, choose hostels or homestays, use buses/trains, cook some meals, and look for city tourism cards for discounts."
+      ]
+    },
+    {
+      "tag": "travel_restrictions",
+      "patterns": [
+        "COVID rules for travel to Italy",
+        "Are there travel restrictions for India?",
+        "Do I need a test to enter [country]?"
+      ],
+      "responses": [
+        "Travel restriction rules change quickly. Please verify on official government or airline pages before booking or traveling."
+      ]
+    },
+    {
+      "tag": "public_holidays",
+      "patterns": [
+        "Public holidays in Japan 2025",
+        "Is [date] a public holiday in UK?",
+        "Holiday calendar for Spain"
+      ],
+      "responses": [
+        "I can't access live calendars here. For accurate public holidays check the official government or trusted calendar sites. Want me to provide typical major holidays for a country?"
+      ]
+    },
+    {
+      "tag": "language_help",
+      "patterns": [
+        "How do you say thank you in Japanese?",
+        "Translate 'Where is the hotel?' to Spanish",
+        "Useful phrases for traveling in France"
+      ],
+      "responses": [
+        "Tell me the phrase and target language. Example: 'Thank you' in Japanese is 'Arigatou' (ありがとう). I can suggest common travel phrases too."
+      ]
+    },
+    {
+      "tag": "emergency_contacts",
+      "patterns": [
+        "Emergency number in UK",
+        "Who to call in case of emergency in USA?",
+        "Local emergency number for [country]"
+      ],
+      "responses": [
+        "Emergency numbers vary: UK/Europe: 112, USA/Canada: 911. For other countries check local government pages. Always note your country's embassy contact when abroad."
+      ]
+    },
+    {
+      "tag": "recommend_destination",
+      "patterns": [
+        "Recommend a destination for honeymoon",
+        "Best places to visit in August",
+        "Where should I travel in winter?"
+      ],
+      "responses": [
+        "Tell me your interests (beach, mountains, culture), travel month, and budget. I’ll suggest 3 destinations with reasons and sample itineraries."
+      ]
+    },
+    {
+      "tag": "fallback_travel",
+      "patterns": [
+        "I don't know how to phrase this",
+        "Can you help with travel stuff?",
+        "I need travel advice"
+      ],
+      "responses": [
+        "No problem — tell me the destination, dates, and what you need (flights, hotels, itinerary, visa) and I'll help step-by-step."
+      ]
+    }
+    
+  ]
+}

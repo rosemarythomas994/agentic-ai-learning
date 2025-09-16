@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Chatbot UI</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #chatbox { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; margin-bottom: 10px; }
+    .user { color: blue; }
+    .bot { color: green; }
+    #message { width: 80%; padding: 8px; }
+    #sendBtn { padding: 8px 15px; }
+  </style>
+</head>
+<body>
+
+  <h2>Chatbot</h2>
+
+  <div id="chatbox"></div>
+
+  <input type="text" id="message" placeholder="Type your message..." />
+  <button id="sendBtn">Send</button>
+
+  <script>
+    const chatbox = document.getElementById('chatbox');
+    const messageInput = document.getElementById('message');
+    const sendBtn = document.getElementById('sendBtn');
+
+    function appendMessage(sender, text) {
+      const div = document.createElement('div');
+      div.className = sender;
+      div.textContent = sender === 'user' ? 'You: ' + text : 'ChatBot: ' + text;
+      chatbox.appendChild(div);
+      chatbox.scrollTop = chatbox.scrollHeight;  // Scroll to bottom
+    }
+
+    async function sendMessage() {
+      const msg = messageInput.value.trim();
+      if (!msg) return;
+
+      appendMessage('user', msg);
+      messageInput.value = '';
+      messageInput.focus();
+
+      try {
+        const response = await fetch('http://127.0.0.1:5000/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: msg })
+        });
+
+        if (!response.ok) throw new Error('Network response was not ok');
+
+        const data = await response.json();
+        appendMessage('bot', data.response);
+      } catch (err) {
+        appendMessage('bot', 'Error: Could not connect to the chatbot backend.');
+        console.error(err);
+      }
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    // Also send message when pressing Enter key
+    messageInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') sendMessage();
+    });
+  </script>
+
+</body>
+</html>
