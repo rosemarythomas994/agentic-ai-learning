@@ -1,0 +1,94 @@
+# Import necessary packages
+from pydantic import BaseModel, ValidationError, Field, EmailStr
+from typing import List, Literal, Optional
+import json
+from datetime import date
+from dotenv import load_dotenv
+import openai
+
+
+# Load environment variables for API access
+load_dotenv()
+# Initialize OpenAI client for API calls
+client = openai.OpenAI()
+
+
+
+
+# Define a function to call the LLM
+def call_llm(prompt, model="gpt-4o"):
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+
+
+pip install pdfplumber
+
+
+
+import pdfplumber
+
+def extract_pdf_text_to_variable(pdf_path):
+    text_data = ""
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text_data += page_text + "\n"
+    return text_data
+
+# Usage example
+pdf_file = "AFP0080 SNAP-R Print (Works as Expected).pdf"   # Replace with your PDF file path
+md_text = extract_pdf_text_to_variable(pdf_file)
+
+print(md_text)  # Now pdf_text variable contains all the PDF text
+
+
+
+
+prompt = f"""You are a document parser extracting structured JSON dynamically.
+
+From the following text, extract all fields and values that are present.
+Instructions :
+1. Go through text data input shared below, which is textual representation of pdf document.
+2. Understand the file structure.
+3. Input may contain checkbox fields, understand how it is represented.
+ For checklist fields:
+  - Include only the items that are marked as selected, indicated by a leading '✔', or 'n' or similar mark.
+  - Do NOT output boolean true/false flags for items.
+  - If no items are selected in a checklist, set that checklist field to null.
+  - if checkbox is under different column in table, keep it under that column name. You have follow the structure.
+
+Group related fields logically.
+
+Split full names into 'FirstName' and 'LastName' if possible.
+Output valid JSON only, with no explanation or extra text.
+
+Text to parse is given below inside <doc> tags:
+<docs>
+ {md_text}
+</docs>
+
+Respond ONLY with valid JSON. Do not include any explanations or 
+other text or formatting before or after the JSON object. 
+Enclose final response inside <text></text> tags"""
+prompt_ = prompt.format(md_text=md_text)
+
+
+
+# Get response from LLM
+# print(prompt_)
+import re
+from pprint import pprint
+response_content = call_llm(prompt_)
+pattern = r'<text>(.*?)</text>'
+match = re.search(pattern, response_content, re.DOTALL)
+if match:
+    resp = json.loads(match.group(1))
+    pprint(resp)
+    print(resp.keys())
+else:
+    print(response_content)

@@ -1,0 +1,142 @@
+%pip install pdfplumber
+
+%pip install ipywidgets pdfplumber
+
+pip install pdfplumber PyPDF2
+
+
+import pdfplumber
+
+
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+# Get the OpenAI API key from the .env file
+load_dotenv('.env', override=True)
+openai_api_key = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key = openai_api_key)
+
+def extract_text_from_pdf(file_path: str) -> str:
+    text = ""
+    with pdfplumber.open(file_path) as pdf:
+        for page in pdf.pages:
+            text += page.extract_text() + "\n"
+    return text
+
+
+
+def pdf_to_dynamic_json(file_path: str):
+    # Step 1: Extract text
+    raw_text = extract_text_from_pdf(file_path)
+
+    # Step 2: Define prompt
+    prompt = f"""
+    You are a document parser.
+    Task: Convert the following text into structured JSON.
+
+    Rules:
+    - Detect fields automatically (keys can vary by document).
+    - Use field names as keys, and their values as JSON values.
+    - Always output valid JSON only (no explanation, no text outside JSON).
+    - If you are not sure about a value, set it as null.
+
+    Text:
+    {raw_text}
+    """
+
+    # Step 3: Call LLM
+    response = get_llm_response(prompt)
+
+    return response
+
+
+
+import ipywidgets as widgets
+from IPython.display import display
+import io
+
+upload_widget = widgets.FileUpload(accept='.pdf', multiple=False)
+display(upload_widget)
+
+def save_uploaded_file(upload_widget):
+    if upload_widget.value:
+        # Get the first uploaded file
+        file_info = list(upload_widget.value.values())[0]
+        file_name = file_info['metadata']['name']
+        content = file_info['content']
+        # Save to disk
+        with open(file_name, "wb") as f:
+            f.write(content)
+        return file_name
+    return None
+
+
+
+
+def save_uploaded_file(upload_widget):
+    if upload_widget.value:
+        # In new ipywidgets, value is a tuple of dicts
+        file_info = upload_widget.value[0]
+        file_name = file_info['name']
+        content = file_info['content']
+        # Save to disk
+        with open(file_name, "wb") as f:
+            f.write(content)
+        return file_name
+    return None
+
+
+file_path = save_uploaded_file(upload_widget)
+print("Saved file:", file_path)
+
+
+json_data = pdf_to_json(file_path)
+print(json_data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def pdf_to_json(file_path: str):
+    # Step 1: Extract text
+    raw_text = extract_text_from_pdf(file_path)
+
+    # Step 2: Define prompt
+    prompt = f"""
+    You are a strict JSON converter.
+    Extract structured JSON with exactly these keys:
+    ["name", "address", "country", "license_number"]
+
+    Rules:
+    - Always output valid JSON only (no explanation).
+    - If a field is missing, set its value to null.
+    - Use the PDF text as source.
+
+    Text:
+    {raw_text}
+    """
+
+    # Step 3: Call LLM
+    response = get_llm_response(prompt)
+
+    return response
+
+
+
+
+
+
+
+
+
+def pdf_to_json(file_path: str): # Step 1: Extract text raw_text = extract_text_from_pdf(file_path) # Step 2: Define prompt prompt = f""" You are a document parser. Extract structured JSON with the following keys: ["name", "address", "country", "license_number"] The input text may have inconsistent formats (colon style, line break style, etc.). If a field is missing, return it as null. Example output: {{ "name": "Rose", "address": "Kochi", "country": null, "license_number": null }} Here is the text: {raw_text} """ # Step 3: Call LLM response = get_llm_response(prompt) return response
+

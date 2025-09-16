@@ -1,0 +1,1104 @@
+in the time of first image my code is wokring?
+but second type pdf not working properly
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Get the OpenAI API key from the .env file
+load_dotenv('.env', override=True)
+openai_api_key = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key = openai_api_key)
+
+def get_llm_response(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistant.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.0,
+    )
+    response = completion.choices[0].message.content
+    return response
+
+
+pip install pypdf
+
+pip install pymupdf
+!pip install PyPDF2
+
+
+
+%pip install pytesseract pillow
+
+
+!pip install pdfplumber openai python-dotenv ipywidgets
+
+
+import pdfplumber
+from PyPDF2 import PdfReader
+
+import ipywidgets as widgets
+from IPython.display import display
+
+
+
+# Step 2: File upload widget for Jupyter
+upload_widget = widgets.FileUpload(accept='.pdf', multiple=False)
+display(upload_widget)
+
+
+
+# Step 3: Save uploaded PDF file locally
+def save_uploaded_file(upload_widget):
+    if upload_widget.value and len(upload_widget.value) > 0:
+        file_info = upload_widget.value[0]
+        file_name = file_info['name']
+        content = file_info['content']
+        with open(file_name, "wb") as f:
+            f.write(content)
+        return file_name
+    return None
+
+
+# After uploading, run this cell manually
+file_path = save_uploaded_file(upload_widget)
+print("Saved file:", file_path)
+
+
+# Step 4: Extract raw text from PDF using pdfplumber
+def extract_text_from_pdf(file_path):
+    text = ""
+    with pdfplumber.open(file_path) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text += page_text + "\n"
+    return text
+
+
+# Step 5: Extract form fields (includes radio buttons / checkboxes) using PyPDF2
+def extract_pdf_form_fields(file_path):
+    reader = PdfReader(file_path)
+    fields = reader.get_fields()
+    result = {}
+    if fields:
+        for key, val in fields.items():
+            if isinstance(val, dict):
+                value = val.get('/V') or val.get('/AS')
+                if value and hasattr(value, 'original_bytes'):
+                    value = value.original_bytes.decode('utf-8')
+                if isinstance(value, str) and value.startswith('/'):
+                    value = value[1:]
+                result[key] = value
+            else:
+                result[key] = val
+    return result
+
+# Step 6: OpenAI LLM call for JSON extraction from raw text
+def get_llm_response(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistant.", 
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.0, # change this to a value between 0 and 2
+    )
+    response = completion.choices[0].message.content
+    return response
+
+
+# Step 7: Convert PDF text to JSON using LLM with given fields
+def parse_pdf_to_json(file_path):
+    form_fields = extract_pdf_form_fields(file_path)
+    raw_text = extract_text_from_pdf(file_path)
+
+    # Convert form fields dictionary into a string representation for the prompt
+    form_fields_str = "\n".join([f"{k}: {v}" for k,v in form_fields.items()])
+
+    prompt = f"""
+You are a document parser. Your task is to convert the provided PDF text and form data
+into structured JSON.
+
+Rules:
+
+1. Include all fields in the output JSON, even if their value is empty or null.
+2. For checkboxes or radio buttons:
+   -Include only the items that are selected (marked with '✔' or similar).
+   - If no items in a checkbox/radio group are selected, set the field to null.
+   - Do NOT output boolean true/false for unselected items.
+   - Extract only the items that are marked as selected, indicated by a leading '✔' or similar mark.
+    - Ignore items without any selection mark.
+    - If no items are selected in a checklist, set it to null.
+
+3. Split full names into 'FirstName' and 'LastName' if possible.
+4. Group logically related fields together.
+5. Output valid JSON only. No explanation, no extra text.
+6.Extract data if it is split into two coloumns and/or numbered columns data
+
+Here are the filled form fields (checkboxes, radios, etc.):
+
+{form_fields_str}
+
+Here is the extracted text from the PDF:
+
+{raw_text}
+"""
+
+    json_output = get_llm_response(prompt)
+    return json_output
+
+
+# Step 8: Run everything and show combined result
+if file_path:
+    # Extract raw text
+    raw_text = extract_text_from_pdf(file_path)
+    print(raw_text)
+    
+    # Extract PDF interactive form fields
+    form_fields = extract_pdf_form_fields(file_path)
+    print(form_fields)
+
+    # Convert raw text to JSON with LLM
+    extracted_json = pdf_text_to_json(raw_text)
+    print("----- Extracted JSON from Text -----")
+    print(extracted_json)
+else:
+    print("Please upload a PDF file above and rerun this cell.")
+
+
+result
+----- Raw Extracted Text -----
+An official website of the United States government Here's how you know
+Bureau of Industry and Security
+U.S. Department of Commerce
+Export License Application
+Status ACCEPTED
+Contact Information
+Reference Number
+AFP0080
+1. Contact Person (First Name, Last Name)
+Zeljko Tolo
+2. Telephone Number 3. Fax Number
+216-317-9273 -
+Email
+ztolo@aerofp.com
+4. Creation Date
+06/19/2025
+5. Type of Application
+Export License Application
+Document Checklist
+6. Documents submitted with application 7. Documents on file with applicant
+✔ Export Items (BIS-748P-A) BIS-711
+✔ End Users (BIS-748P-B) Letter of Assurance
+BIS-711 Import/End-User Certificate
+✔ Import/End-User Certificate Nuclear Certification
+✔ Technical Specification
+Other
+✔ Letter of Explanation -
+Foreign Availability
+Other
+-
+Tell us what to improve
+License Information
+9. Special Purpose
+Technology
+10. Resubmission ACN 11. Replacement License Number
+- -
+13. Import Certificate Country Import Certificate Number
+- -
+Applicant Information
+14. CIN (Applicant ID) Applicant
+A703543 Aero Fluid Products
+Address 1 Address 2
+313 Gillett St. -
+City Country
+Painesville UNITED STATES
+State/Province Postal Code
+Ohio 44077
+EIN
+26-0379798
+Other Party Information
+15. Other Party ID Other Party
+- -
+Address 1 Address 2
+- -
+City Country
+- -
+State/Province Postal Code
+- -
+Telephone or Fax
+-
+a) If you are a First Party submitter and will be the Principal Party in Interest using this license, note
+that, in the electronic environment, this block does not function to send a license to any other
+interested party, and no other interested party will appear on the license.
+If you wish another party to be authorized to discuss this license, please enter the information in
+Block 24 (Additional Information) and name specific individuals.
+b) If you need to add any party to be authorized under the license, but for whom there is no available
+field (such as a second Intermediate Consignee), list that party in Block 19 (End User Information),
+even if they are not an End User, and explain their role in the transaction in Block 24 (Additional
+Information), or in an attached Letter of Explanation.
+Purchaser Information
+16. Purchaser
+EMBRAER S.A.
+Address 1 Address 2
+Rodovia Presidente Dutra, Km 134, Eugenio de (And all Brazilian Locations)
+Melo
+City Country
+Sao Jose dos Campos, SP BRAZIL
+State/Province Postal Code
+- -
+Telephone or Fax
+-
+Intermediate Consignee Information
+17. Intermediate Consignee
+DSV AIR & SEA
+Address 1 Address 2
+Av. Jornalista Roberto Marinho, 85 (And all Brazilian Locations)
+City Country
+Sao Paulo-SP BRAZIL
+State/Province Postal Code
+- 04575-000
+Telephone or Fax
+-
+Ultimate Consignee Information
+18. Ultimate Consignee
+EMBRAER S.A.
+Address 1 Address 2
+Rodovia Presidente Dutra, Km 134, Eugenio de (And all Brazilian Locations)
+Melo
+City Country
+Sao Jose dos Campos, SP BRAZIL
+State/Province Postal Code
+- -
+Telephone or Fax
+-
+End User Information
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Estrada
+Municipal (And all Gaviao
+EMBRA
+Euclides Brazilian Peixot BRAZIL
+ER S.A.
+Martins, Locations) o, SP
+2170
+Depart Camp (And all Quezo PHILIPPINES 1110
+ment of General Philippines n City
+Nation Emilio Locations)
+al Aguinaldo,
+Defens Natividad
+e/Arme Ave,
+d
+Forces
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+of The
+Philippi
+nes
+Base Aerea
+General
+Ecuado Eloy Alfaro, (And all
+rian Air Ala de Ecuador Manta ECUADOR
+Force Combate # Locations)
+23 Via a
+Jaramijo
+Comando
+Logistico
+Chilean de la FACH. (And all Los
+Air Avenida Chilean Cerrilo CHILE
+Force Pedro Locations) s
+Aguirre,
+S/N
+ENAER
+–
+EMPRE
+Gran
+SA
+Avenida
+NACIO (And all
+Jose Santia
+NAL Chilean CHILE
+Miguel go
+DE Locations)
+Carrera,
+AERON
+11087
+AUTIC
+A DE
+CHILE
+Directoria
+de
+Domini
+Proyectos
+can (And all Santo
+Y
+Republi Dominican Domin DOMINICAN
+Programas,
+c Air Republic go REPUBLIC
+Base Aerea
+Force - Locations) Este
+De San
+FAD
+Isidro, San
+Isidro
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Colomb
+ian Air Ministerio Avenida El
+Force de Defensa Dorado,
+(And all Naciona CAN Bogota
+COLOMBIA
+Columb Grupo Carrera 52 DC
+ian Contratacio - Oficina
+Locatio n Estatal 203
+ns)
+Brazilia
+Ministerio
+n Air Esplanada
+da Defesa,
+Force dos
+Comando
+(And all Ministerios, Brasíli 70045-
+da BRAZIL
+Brazilia Bloco M, a DF 900
+Aeronautic
+n Anexo A, 2
+a -
+Locatio Andar
+COMAER
+ns)
+Ministr
+y Of
+Defens Jalan
+e Of Medan (And all
+Jakarta
+The Merdeka Indonesian INDONESIA 10110
+Pusat
+Republi Barat, No. Locations)
+c Of 13 – 14
+Indone
+sia
+FANA -
+Forca
+Aerea Operator
+Angola and Rua
+na Foreign Augusto
+(Angol End-user* Tadeu de Bairro
+a Air Quartel Bastos – ex- Maiang ANGOLA
+Force) General da 05 de a
+(And all Força Outubro no
+Angolia Aerea 66/68
+n Nacional
+Locatio
+ns)
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Simpor
+tex
+Comer
+cializac
+ao De
+Equip e
+(And all
+Meios Rua Rainha Luanda
+Angolan ANGOLA 2952
+Materia Ginga 24 , C.P.
+Locations)
+is
+Import
+&
+Export
+Angola
+n Gov
+GOVER
+NMEN
+T OF
+Zone
+THE
+Aeroport (And all
+ISLAMI Nouak
+Internation Mauritania MAURITANIA BP 208
+C chott
+al de Locations)
+REPUB
+Nouakchott
+LIC OF
+MAURI
+TANIA
+Estado-
+Portug Maior da
+uese Força (And all
+Amado N 1 2614-
+Air Aerea Av. Portuguese PORTUGAL
+ra 506
+Force da Força Locations)
+(FAP) Aerea
+Portuguesa
+The
+Ministr
+(And all
+y of
+Galkynysh Turkmenist Ashga
+Defens TURKMENISTAN 744000
+street, 4 an bat
+e of
+Locations)
+Turkme
+nistan
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Avda.
+Ciudad
+Fuerza General
+(And all de
+Aerea Jose
+Paraguay Luque PARAGUAY
+Paragu Elizardo
+Locations) Republ
+aya Aquino,
+ica
+1792
+Fuerza Av. Pedro
+(And all
+Aerea de Montev
+Uruguay URUGUAY
+Urugua Mendoza, ideo
+Locations)
+ya 5553
+DSV 19-23
+(And all
+AIR & Chemin des Genne
+French FRANCE 92230
+SEA Petits villiers
+Locations)
+SAS Marais
+DSV 3 rue du
+(And all
+AIR & Remblai – Trembl
+French FRANCE 93290
+SEA Zone cargo ay
+Locations)
+SAS 4
+Unit 1,
+DSV
+Polar Park,
+AIR & (And all UK Heathr UNITED
+Bath Road UB7 0EX
+SEA Locations) ow KINGDOM
+West
+LTD
+Drayton
+DSV
+(And all
+AIR & Gruener Hambu GERMANY,
+German 20097
+SEA Deich 1 rg FEDERAL REP
+Locations)
+GMBH
+YEHUD AMIT (And all Tel ISRAEL 70100
+IT Building, Israeli Aviv
+HAZAN Airport Locations)
+BERGE City, Ben
+L - COO Gurion
+EXPOR Airport PO
+T AIR Box 77
+AND
+SEA
+The A
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+M IT
+GROUP
+DSV
+AIR & 44 (And all
+SEA Hama'ayan Israeli Modi'in ISRAEL 7173000
+ISRAEL Street Locations)
+LTD.
+Limito
+Via Dante (And all
+DSV di
+Alighieri,13 Italian ITALY 20096
+S.P.A. Piotell
+4 Locations)
+o
+Industriezo
+DSV Puurs-
+ne Puurs (And all
+AIR & Sint-
+533 Belgium BELGIUM BE-2870
+SEA Amand
+Schoonma Locations)
+NV s
+nsveld 40
+Zona
+DSV
+Industrial
+AIR (And all
+do Cabo
+AND Portuguese Lisboa PORTUGAL 2600-695
+Castanheir
+SEA Locations)
+a do
+LDA
+Ribatejo
+DSV Vilar
+Rua Campo (And all
+TRANS do 4485-
+do Martelo, Portugal PORTUGAL
+ITARIO Pinheir 000
+319 Locations)
+S, LDA o
+DSV
+(And all
+AIR & Driver Road Brampt
+Canadian CANADA L6T 5V2
+SEA unit 4 on
+Locations)
+Inc
+SERVI Avenida
+MEX Moema, (And all Sao
+04077-
+LOGIST 877 – Brazilian Paulo- BRAZIL
+023
+ICA Indianopoli Locations) SP
+LTDA. s
+Schenk Rua (And all Sao BRAZIL 04575-
+er do Geraldo Brazilian Paulo- 093
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Brasil Flausino Locations) SP
+Transp Gomes, 78
+ortes - 12º andar,
+Interna Brooklin
+cionais
+LTDA.
+Transp
+Rua
+ortador
+Marginal (And all
+a Botuca 18606-
+200, nº Brazilian BRAZIL
+Aquari tu – SP 550
+600-Vila Locations)
+un
+Real
+LTDA.
+DHL
+Avenida
+Expres (And all Sao
+Santa
+s Brazilian Paulo- BRAZIL
+Marina,
+(Brazil) Locations) SP
+1660-Lapa
+LTDA.
+37 route
+SCHEN (And all Genne
+principale
+KER French villiers FRANCE F-92 637
+du port CE
+S.A. Locations) Cedex
+214
+DB
+SCHEN
+Head
+KER
+Office -
+KOREA Gonghangd
+Airport KOREA,
+LTD. ong-ro 296 Incheo
+Logistics REPUBLIC OF 22379
+(And all beon-gil, n
+Park G3 (SOUTH KOREA)
+South Junggu
+block, 97-
+Korean
+49
+Locatio
+ns)
+DHL Sort (And all Villene FRANCE
+Expres centre, 9 French uve La
+s Sort Rue du Cdt Locations) Garenn
+Center d Estienne e
+Paris d Orves
+ZAC du
+parc des
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Chanterein
+es
+UPS do
+Brasil
+Rua Dom
+Remes (And all Sao
+Aguirre, nº
+sas Brazilian Paulo- BRAZIL 04671245
+554-Jardim
+Expres Locations) SP
+Marajoara
+sas
+LTDA
+FEDEX Avenida
+Expres das Naçoes (And all Sao
+s Unidas, Brazilian Paulo- BRAZIL
+Corpor nº17891-1º Locations) SP
+ation andar
+Avenida
+Phenix Educador
+Transp Paulo (And all Sao
+orte de Freire, 111- Brazilian Paulo- BRAZIL 02187-110
+Cargas Parque Locations) SP
+LTDA. Novo
+Mundo
+Alameda
+Master
+dos
+Freight
+Jurupis,
+Transp (And all Sao
+452-Conj. 04088-
+ortes Brazilian Paulo- BRAZIL
+71 - Bloco 901
+Interna Locations) SP
+A-
+cionaiS
+Indianopoli
+LTDA.
+s
+PGL
+Av. Dr. Lino
+Prime
+de Mores
+Agenci (And all Sao
+Leme, 04360-
+amento Brazilian Paulo- BRAZIL
+1138-1 000
+de Locations) SP
+Andar-Vila
+Carga
+Paulista
+LTDA.
+M & K Rua (And all Sao BRAZIL 09634-
+Assess Jacquey, Brazilian Bernar 000
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+oria, 163-3 Locations) do do
+Export ANDAR- Campo
+adora, Vila Helena -SP
+Import
+adora
+LTDA.
+Av. Jose de
+Expedit
+Souza
+ors Campi
+Campos,
+Interna (And all nas,
+575 13092-
+tional Brazilian Bairro BRAZIL
+Edificio 106
+do Locations) Cambu
+575 Norte
+Brasil i
+Sul-6º
+LTDA.
+andar
+Vila
+RUA
+(And all Olimpi
+Enterpr Alvorada, 04550-
+Brazilian a-Sao BRAZIL
+ise 1289-3º 004
+Locations) Paulo-
+andar
+SP
+KUEHN Avenida
+(And all
+E + Calle 26,
+Columbian Bogota COLOMBIA
+NAGEL 106-39,
+Locations)
+S.A.S Piso 4
+SUNRI Calle 46 A
+(And all
+SE No 82-54
+Columbian Bogota COLOMBIA
+CARGO Porteria 2,
+Locations)
+S.A. Interior 8
+Av.
+KUEHN
+Providencia (And all
+E + Santia
+2331 Of. Chilean CHILE
+NAGEL go
+301 And Locations)
+LTDA
+302
+DB
+SCHEN
+General del (And all
+KER Santia
+Canto 421, Chilean CHILE 7500588
+LOGIST go
+Piso 3 Locations)
+ICS IN
+CHILE
+19.
+Address Address Postal Telephone
+End City Country
+Line 1 Line 2 Code or Fax
+User
+Av. Irlanda
+E10-16 Y
+KUEHN Republica
+(And all
+E + Del
+Ecuador Quito ECUADOR
+NAGEL Salvador
+Locations)
+S.A. Edif. Torre
+Siglo XXI
+Piso No. 7
+SERVIC
+IOS
+AEREO Parque
+S Y Empresaria
+MARITI l Colon
+(And all
+MOS Edificio Guaya
+Ecuador ECUADOR
+INTER Corporativo quil
+Locations)
+NACIO #2 Piso 2
+NALES Oficina #
+SA 204
+(SAMIS
+A)
+CARIB
+ETRAN
+S,
+S.A.|BA Calle Jose (And all
+Santo
+SC Gabriel Dominican DOMINICAN Postal
+Domin
+CERTIF Garcia No. Republic REPUBLIC 1713
+go
+IED 8 Apartado Locations)
+DOMS
+DQ000
+03
+Av. 27 de
+Febrero Ens.
+(And all
+DB Esq. Naco,
+Dominican DOMINICAN
+SCHEN Tiradentes, Santo
+Republic REPUBLIC
+KER Plaza Domin
+Locations)
+Merengue go
+Local 102
+First Previous 1 of 2 Next Last
+Specific End Use
+21. Specific End Use
+5344-00-1 Valve is used as a component of the anti-icing air system. Valve is used to control
+the flow of engine bleed air within the anti-icing system.
+Export Item Information
+22. Export Item #1
+(a) ECCN (b) APP (c) Product/Model Number (d) CCATS Number
+9A610 - 5344-00-1 -
+(e) Quantity (f) Units (g) Unit Price (h) Total Price (i) Manufacturer
+1 each $5995 $5995 Aero Fluid Products
+(j) Technical Description
+5344-00-1 Normally closed 1.5” shutoff valve that is solenoid operated. There is also a
+switch to indicate valve position.
+22. Export Item #2
+(a) ECCN (b) APP (c) Product/Model Number (d) CCATS Number
+9E610 - Technology -
+(e) Quantity (f) Units (g) Unit Price (h) Total Price (i) Manufacturer
+1 Lot $1 $1 Aero Fluid Produts
+(j) Technical Description
+The 9E610 Technology to be provided to Embraer is required to support the design,
+installation, maintenance, and repair of the 5344-00-1. The Information may be in any
+tangible or intangible form, such as written or oral communications, drawings,
+photographs, engineering designs and specifications, computer-aided design files,
+manuals or documentation, electronic media or information revealed through visual
+inspection.
+Total Application Dollar Value
+23. Total Application Dollar Value
+$5,996.00
+Additional Information
+24. Additional Information
+The remainder of the Intermediate Consignees are in Block 19.
+Documents attached to application
+Title Author Document Type View
+Embraer End User Statement Import/End-User
+Embraer S.A.
+905660040 Copy Certificate
+AFP0080 Letter of Explanation Zeljko Tolo Letter of Explanation
+5344-00-1 Acceptance Test Aero Fluid
+Tech. Specs.
+Report Products
+Aero Fluid
+5344-00-1 Drawing Tech. Specs.
+Products
+First Previous 1 of 1 Next Last
+Signer Information
+Name
+Z.TOLO
+Title
+Dir of Comp
+Email
+ztolo@aerofp.com
+
+```json
+{
+  "ContactInformation": {
+    "ReferenceNumber": "AFP0080",
+    "ContactPerson": {
+      "FirstName": "Zeljko",
+      "LastName": "Tolo"
+    },
+    "TelephoneNumber": "216-317-9273",
+    "FaxNumber": null,
+    "Email": "ztolo@aerofp.com",
+    "CreationDate": "06/19/2025",
+    "TypeOfApplication": "Export License Application"
+  },
+  "DocumentChecklist": {
+    "DocumentsSubmittedWithApplication": [
+      "Export Items (BIS-748P-A)",
+      "End Users (BIS-748P-B)",
+      "Import/End-User Certificate",
+      "Technical Specification",
+      "Letter of Explanation"
+    ],
+    "DocumentsOnFileWithApplicant": [
+      "BIS-711",
+      "Letter of Assurance",
+      "Nuclear Certification"
+    ]
+  },
+  "LicenseInformation": {
+    "SpecialPurpose": "Technology",
+    "ResubmissionACN": null,
+    "ReplacementLicenseNumber": null,
+    "ImportCertificateCountry": null,
+    "ImportCertificateNumber": null
+  },
+  "ApplicantInformation": {
+    "CIN": "A703543",
+    "Applicant": "Aero Fluid Products",
+    "Address": {
+      "Address1": "313 Gillett St.",
+      "Address2": null,
+      "City": "Painesville",
+      "Country": "UNITED STATES",
+      "StateProvince": "Ohio",
+      "PostalCode": "44077"
+    },
+    "EIN": "26-0379798"
+  },
+  "OtherPartyInformation": {
+    "OtherPartyID": null,
+    "OtherParty": null,
+    "Address": {
+      "Address1": null,
+      "Address2": null,
+      "City": null,
+      "Country": null,
+      "StateProvince": null,
+      "PostalCode": null
+    },
+    "TelephoneOrFax": null
+  },
+  "PurchaserInformation": {
+    "Purchaser": "EMBRAER S.A.",
+    "Address": {
+      "Address1": "Rodovia Presidente Dutra, Km 134, Eugenio de Melo",
+      "Address2": "(And all Brazilian Locations)",
+      "City": "Sao Jose dos Campos, SP",
+      "Country": "BRAZIL",
+      "StateProvince": null,
+      "PostalCode": null,
+      "TelephoneOrFax": null
+    }
+  },
+  "IntermediateConsigneeInformation": {
+    "IntermediateConsignee": "DSV AIR & SEA",
+    "Address": {
+      "Address1": "Av. Jornalista Roberto Marinho, 85",
+      "Address2": "(And all Brazilian Locations)",
+      "City": "Sao Paulo-SP",
+      "Country": "BRAZIL",
+      "StateProvince": null,
+      "PostalCode": "04575-000",
+      "TelephoneOrFax": null
+    }
+  },
+  "UltimateConsigneeInformation": {
+    "UltimateConsignee": "EMBRAER S.A.",
+    "Address": {
+      "Address1": "Rodovia Presidente Dutra, Km 134, Eugenio de Melo",
+      "Address2": "(And all Brazilian Locations)",
+      "City": "Sao Jose dos Campos, SP",
+      "Country": "BRAZIL",
+      "StateProvince": null,
+      "PostalCode": null,
+      "TelephoneOrFax": null
+    }
+  },
+  "EndUserInformation": [
+    {
+      "Address": {
+        "Line1": "Estrada Municipal",
+        "Line2": "(And all Brazilian Locations)",
+        "City": "Gaviao",
+        "Country": "BRAZIL",
+        "PostalCode": "2170",
+        "Telephone": null
+      },
+      "EndUser": "EMBRAER S.A."
+    },
+    {
+      "Address": {
+        "Line1": "Base Aerea General Eloy Alfaro",
+        "Line2": "(And all Ecuadorian Locations)",
+        "City": "Manta",
+        "Country": "ECUADOR",
+        "PostalCode": null,
+        "Telephone": null
+      },
+      "EndUser": "Ecuadorian Air Force"
+    },
+    {
+      "Address": {
+        "Line1": "Avenida Pedro Aguirre",
+        "Line2": "(And all Chilean Locations)",
+        "City": "Santiago",
+        "Country": "CHILE",
+        "PostalCode": null,
+        "Telephone": null
+      },
+      "EndUser": "Chilean Air Force"
+    },
+    {
+      "Address": {
+        "Line1": "Base Aerea De San Isidro",
+        "Line2": "(And all Dominican Locations)",
+        "City": "San Isidro",
+        "Country": "DOMINICAN REPUBLIC",
+        "PostalCode": null,
+        "Telephone": null
+      },
+      "EndUser": "Dominican Air Force"
+    },
+    {
+      "Address": {
+        "Line1": "Ministerio de Defensa Nacional",
+        "Line2": "(And all Colombian Locations)",
+        "City": "Bogota",
+        "Country": "COLOMBIA",
+        "PostalCode": null,
+        "Telephone": null
+      },
+      "EndUser": "Colombian Air Force"
+    }
+  ],
+  "SpecificEndUse": "5344-00-1 Valve is used as a component of the anti-icing air system. Valve is used to control the flow of engine bleed air within the anti-icing system.",
+  "ExportItemInformation": [
+    {
+      "ExportItemNumber": 1,
+      "ECCN": "9A610",
+      "APP": null,
+      "ProductModelNumber": "5344-00-1",
+      "CCATSNumber": null,
+      "Quantity": "1 each",
+      "Units": null,
+      "UnitPrice": "$5995",
+      "TotalPrice": "$5995",
+      "Manufacturer": "Aero Fluid Products",
+      "TechnicalDescription": "5344-00-1 Normally closed 1.5” shutoff valve that is solenoid operated. There is also a switch to indicate valve position."
+    },
+    {
+      "ExportItemNumber": 2,
+      "ECCN": "9E610",
+      "APP": null,
+      "ProductModelNumber": null,
+      "CCATSNumber": null,
+      "Quantity": "1 Lot",
+      "Units": null,
+      "UnitPrice": "$1",
+      "TotalPrice": "$1",
+      "Manufacturer": "Aero Fluid Products",
+      "TechnicalDescription": "The 9E610 Technology to be provided to Embraer is required to support the design, installation, maintenance, and repair of the 5344-00-1. The Information may be in any tangible or intangible form, such as written or oral communications, drawings, photographs, engineering designs and specifications, computer-aided design files, manuals or documentation, electronic media or information revealed through visual inspection."
+    }
+  ],
+  "TotalApplicationDollarValue": "$5,996.00",
+  "AdditionalInformation": "The remainder of the Intermediate Consignees are in Block 19.",
+  "DocumentsAttachedToApplication": [
+    {
+      "Title": "Embraer End User Statement",
+      "Author": "Embraer S.A.",
+      "DocumentType": "Import/End-User"
+    },
+    {
+      "Title": "AFP0080 Letter of Explanation",
+      "Author": "Zeljko Tolo",
+      "DocumentType": "Letter of Explanation"
+    },
+    {
+      "Title": "5344-00-1 Acceptance Test Tech. Specs. Report",
+      "Author": "Aero Fluid Products",
+      "DocumentType": "Tech. Specs."
+    },
+    {
+      "Title": "5344-00-1 Drawing",
+      "Author": "Aero Fluid Products",
+      "DocumentType": "Tech. Specs."
+    }
+  ],
+  "SignerInformation": {
+    "Name": "Z.TOLO",
+    "Title": "Dir of Comp",
+    "Email": "ztolo@aerofp.com"
+  }
+}
+```
+​

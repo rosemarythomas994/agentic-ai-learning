@@ -1,0 +1,201 @@
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Get the OpenAI API key from the .env file
+load_dotenv('.env', override=True)
+openai_api_key = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key = openai_api_key)
+
+def get_llm_response(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistant.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.0,
+    )
+    response = completion.choices[0].message.content
+    return response
+
+
+pip install pypdf
+
+pip install pymupdf
+!pip install PyPDF2
+
+
+
+%pip install pytesseract pillow
+
+
+!pip install pdfplumber openai python-dotenv ipywidgets
+
+
+import pdfplumber
+from PyPDF2 import PdfReader
+
+import ipywidgets as widgets
+from IPython.display import display
+
+
+
+# Step 2: File upload widget for Jupyter
+upload_widget = widgets.FileUpload(accept='.pdf', multiple=False)
+display(upload_widget)
+
+
+
+# Step 3: Save uploaded PDF file locally
+def save_uploaded_file(upload_widget):
+    if upload_widget.value and len(upload_widget.value) > 0:
+        file_info = upload_widget.value[0]
+        file_name = file_info['name']
+        content = file_info['content']
+        with open(file_name, "wb") as f:
+            f.write(content)
+        return file_name
+    return None
+
+
+# After uploading, run this cell manually
+file_path = save_uploaded_file(upload_widget)
+print("Saved file:", file_path)
+
+
+# Step 4: Extract raw text from PDF using pdfplumber
+def extract_text_from_pdf(file_path):
+    text = ""
+    with pdfplumber.open(file_path) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text += page_text + "\n"
+    return text
+
+
+# Step 5: Extract form fields (includes radio buttons / checkboxes) using PyPDF2
+def extract_pdf_form_fields(file_path):
+    reader = PdfReader(file_path)
+    fields = reader.get_fields()
+    result = {}
+    if fields:
+        for key, val in fields.items():
+            if isinstance(val, dict):
+                value = val.get('/V') or val.get('/AS')
+                if value and hasattr(value, 'original_bytes'):
+                    value = value.original_bytes.decode('utf-8')
+                if isinstance(value, str) and value.startswith('/'):
+                    value = value[1:]
+                result[key] = value
+            else:
+                result[key] = val
+    return result
+
+# Step 6: OpenAI LLM call for JSON extraction from raw text
+def get_llm_response(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistant.", 
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.0, # change this to a value between 0 and 2
+    )
+    response = completion.choices[0].message.content
+    return response
+
+
+# Step 7: Convert PDF text to JSON using LLM with given fields
+def parse_pdf_to_json(file_path):
+    form_fields = extract_pdf_form_fields(file_path)
+    raw_text = extract_text_from_pdf(file_path)
+
+    # Convert form fields dictionary into a string representation for the prompt
+    form_fields_str = "\n".join([f"{k}: {v}" for k,v in form_fields.items()])
+
+    prompt = f"""
+You are a document parser. Your task is to convert the provided PDF text and form data
+into structured JSON.
+
+Rules:
+
+1. Include all fields in the output JSON, even if their value is empty or null.
+2. For checkboxes or radio buttons:
+   -Include only the items that are selected (marked with '✔' or similar).
+   - If no items in a checkbox/radio group are selected, set the field to null.
+   - Do NOT output boolean true/false for unselected items.
+   - Extract only the items that are marked as selected, indicated by a leading '✔' or similar mark.
+    - Ignore items without any selection mark.
+    - If no items are selected in a checklist, set it to null.
+
+3. Split full names into 'FirstName' and 'LastName' if possible.
+4. Group logically related fields together.
+5. Output valid JSON only. No explanation, no extra text.
+6.Extract data if it is split into two coloumns and/or numbered columns data
+
+Here are the filled form fields (checkboxes, radios, etc.):
+
+{form_fields_str}
+
+Here is the extracted text from the PDF:
+
+{raw_text}
+"""
+
+    json_output = get_llm_response(prompt)
+    return json_output
+
+
+# Step 8: Run everything and show combined result
+if file_path:
+    # Extract raw text
+    raw_text = extract_text_from_pdf(file_path)
+    print(raw_text)
+    
+    # Extract PDF interactive form fields
+    form_fields = extract_pdf_form_fields(file_path)
+    print(form_fields)
+
+    # Convert raw text to JSON with LLM
+    extracted_json = pdf_text_to_json(raw_text)
+    print("----- Extracted JSON from Text -----")
+    print(extracted_json)
+else:
+    print("Please upload a PDF file above and rerun this cell.")
+
+
+
+
+
+
+
+
+
+
+pdf_text_to_json
+​
+# Step 8: Run everything and show combined result
+if file_path:
+    # Extract raw text
+    raw_text = extract_text_from_pdf(file_path)
+    print(raw_text)
+    
+    # Extract PDF interactive form fields
+    form_fields = extract_pdf_form_fields(file_path)
+    print(form_fields)
+​
+    # Convert raw text to JSON with LLM
+    extracted_json = pdf_text_to_json(raw_text)
+    print("----- Extracted JSON from Text -----")
+    print(extracted_json)
+else:
+    print("Please upload a PDF file above and rerun this cell.")
+​
