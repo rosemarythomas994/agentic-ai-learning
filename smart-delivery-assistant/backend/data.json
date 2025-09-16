@@ -1,0 +1,10 @@
+{
+  "orders": {
+    "1234": { "status": "In Transit", "eta": "6 PM", "location": "Kochi Warehouse" },
+    "5678": { "status": "Delivered", "eta": "Yesterday", "location": "Customer Address" }
+  },
+  "drivers": {
+    "driver101": { "next_stop": "Lulu Mall", "eta": "25 mins", "route": "NH544" },
+    "driver202": { "next_stop": "Infopark", "eta": "15 mins", "route": "Seaport-Airport Road" }
+  }
+}
