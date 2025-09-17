@@ -1,0 +1,146 @@
+```json
+{
+  "ExportLicenseApplication": {
+    "Status": "COMPLETED - APPROVED W/CONDITIONS",
+    "ContactInformation": {
+      "ReferenceNumber": "SLV0530",
+      "ContactPerson": {
+        "FirstName": "Shelley",
+        "LastName": "Vybiral"
+      },
+      "TelephoneNumber": "6302003543",
+      "FaxNumber": null,
+      "Email": "shelley.vybiral@cmcelectronics.us",
+      "CreationDate": "05/30/2025",
+      "TypeOfApplication": "Export License Application"
+    },
+    "DocumentChecklist": {
+      "DocumentsSubmittedWithApplication": [
+        "Export Items (BIS-748P-A)",
+        "Import/End-User Certificate"
+      ],
+      "DocumentsOnFileWithApplicant": null
+    },
+    "LicenseInformation": {
+      "SpecialPurpose": null,
+      "ResubmissionACN": null,
+      "ReplacementLicenseNumber": null,
+      "ImportCertificate": {
+        "Country": null,
+        "ImportCertificateNumber": null
+      }
+    },
+    "ApplicantInformation": {
+      "CIN": "C702375",
+      "ApplicantName": "CMC Electronics Aurora, LLC",
+      "Address": {
+        "Address1": "84 N. Dugan Road",
+        "Address2": null,
+        "City": "Sugar Grove",
+        "Country": "UNITED STATES",
+        "StateProvince": "Illinois",
+        "PostalCode": "60554"
+      },
+      "EIN": "363503592"
+    },
+    "OtherPartyInformation": {
+      "OtherPartyID": null,
+      "OtherPartyName": null,
+      "Address": {
+        "Address1": null,
+        "Address2": null,
+        "City": null,
+        "Country": null,
+        "StateProvince": null,
+        "PostalCode": null
+      },
+      "TelephoneOrFax": null
+    },
+    "PurchaserInformation": {
+      "PurchaserName": "PILATUS AIRCRAFT LIMITED",
+      "Address": {
+        "Address1": "Pilatusstrasse 1",
+        "Address2": null,
+        "City": "STANS",
+        "Country": "SWITZERLAND",
+        "StateProvince": null,
+        "PostalCode": "6370"
+      },
+      "TelephoneOrFax": null
+    },
+    "IntermediateConsigneeInformation": {
+      "IntermediateConsigneeName": "Hellmann Worldwide Logistics AG",
+      "Address": {
+        "Address1": "Steinackerstrasse 28",
+        "Address2": null,
+        "City": "Kloten",
+        "Country": "SWITZERLAND",
+        "StateProvince": "ZH",
+        "PostalCode": "8302"
+      },
+      "TelephoneOrFax": null
+    },
+    "UltimateConsigneeInformation": {
+      "UltimateConsigneeName": "PILATUS AIRCRAFT LIMITED",
+      "Address": {
+        "Address1": "Pilatusstrasse 1",
+        "Address2": null,
+        "City": "STANS",
+        "Country": "SWITZERLAND",
+        "StateProvince": null,
+        "PostalCode": "6370"
+      },
+      "TelephoneOrFax": null
+    },
+    "EndUserInformation": {
+      "EndUser": null
+    },
+    "SpecificEndUse": "The avionics equipment subject to this license will be delivered to Pilatus Aircraft Limited for use in testing on its PC-21 trainer aircraft.",
+    "ExportItems": [
+      {
+        "ExportItemNumber": 1,
+        "ECCN": "9A610",
+        "APP": null,
+        "ProductModelNumber": null,
+        "CCATSNumber": null,
+        "Quantity": 1,
+        "Units": "each",
+        "UnitPrice": "$4017",
+        "TotalPrice": "$4017",
+        "Manufacturer": "CMC Electronics Aurora",
+        "TechnicalDescription": "(digital HUD) boresight module"
+      },
+      {
+        "ExportItemNumber": 2,
+        "ECCN": "9A610",
+        "APP": null,
+        "ProductModelNumber": null,
+        "CCATSNumber": null,
+        "Quantity": 1,
+        "Units": "each",
+        "UnitPrice": "$54080",
+        "TotalPrice": "$54080",
+        "Manufacturer": "CMC ELECTRONICS AURORA",
+        "TechnicalDescription": "(digital HUD) boresight tool"
+      }
+    ],
+    "TotalApplicationDollarValue": "$58,097.00",
+    "AdditionalInformation": null,
+    "AttachedDocuments": [
+      {
+        "Title": "end use statement",
+        "Author": "Paolo Soldo, Pilatus Aircraft",
+        "DocumentType": "Import/End-User Certificate"
+      },
+      {
+        "Title": "po",
+        "Author": null,
+        "DocumentType": "Other"
+      }
+    ],
+    "SignerInformation": {
+      "Name": null
+    }
+  }
+}
+```

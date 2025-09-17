@@ -1,0 +1,610 @@
+```json
+{
+  "ExportLicenseApplication": {
+    "Status": "ACCEPTED",
+    "ContactInformation": {
+      "ReferenceNumber": "AFP0080",
+      "ContactPerson": {
+        "FirstName": "Zeljko",
+        "LastName": "Tolo"
+      },
+      "TelephoneNumber": "216-317-9273",
+      "FaxNumber": null,
+      "Email": "ztolo@aerofp.com",
+      "CreationDate": "06/19/2025",
+      "TypeOfApplication": "Export License Application"
+    },
+    "DocumentChecklist": {
+      "DocumentsSubmittedWithApplication": [
+        "Export Items (BIS-748P-A)",
+        "End Users (BIS-748P-B)",
+        "Import/End-User Certificate",
+        "Technical Specification",
+        "Letter of Explanation"
+      ],
+      "DocumentsOnFileWithApplicant": null
+    },
+    "LicenseInformation": {
+      "SpecialPurpose": "Technology",
+      "ResubmissionACN": null,
+      "ReplacementLicenseNumber": null,
+      "ImportCertificate": {
+        "Country": null,
+        "Number": null
+      }
+    },
+    "ApplicantInformation": {
+      "CIN": "A703543",
+      "Applicant": "Aero Fluid Products",
+      "Address": {
+        "Address1": "313 Gillett St.",
+        "Address2": null,
+        "City": "Painesville",
+        "Country": "UNITED STATES",
+        "StateProvince": "Ohio",
+        "PostalCode": "44077"
+      },
+      "EIN": "26-0379798"
+    },
+    "OtherPartyInformation": {
+      "OtherPartyID": null,
+      "OtherParty": null,
+      "Address": {
+        "Address1": null,
+        "Address2": null,
+        "City": null,
+        "Country": null,
+        "StateProvince": null,
+        "PostalCode": null
+      },
+      "TelephoneOrFax": null
+    },
+    "PurchaserInformation": {
+      "Purchaser": "EMBRAER S.A.",
+      "Address": {
+        "Address1": "Rodovia Presidente Dutra, Km 134, Eugenio de Melo",
+        "Address2": "(And all Brazilian Locations)",
+        "City": "Sao Jose dos Campos, SP",
+        "Country": "BRAZIL",
+        "StateProvince": null,
+        "PostalCode": null
+      },
+      "TelephoneOrFax": null
+    },
+    "IntermediateConsigneeInformation": {
+      "IntermediateConsignee": "DSV AIR & SEA",
+      "Address": {
+        "Address1": "Av. Jornalista Roberto Marinho, 85",
+        "Address2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo-SP",
+        "Country": "BRAZIL",
+        "StateProvince": null,
+        "PostalCode": "04575-000"
+      },
+      "TelephoneOrFax": null
+    },
+    "UltimateConsigneeInformation": {
+      "UltimateConsignee": "EMBRAER S.A.",
+      "Address": {
+        "Address1": "Rodovia Presidente Dutra, Km 134, Eugenio de Melo",
+        "Address2": "(And all Brazilian Locations)",
+        "City": "Sao Jose dos Campos, SP",
+        "Country": "BRAZIL",
+        "StateProvince": null,
+        "PostalCode": null
+      },
+      "TelephoneOrFax": null
+    },
+    "EndUserInformation": [
+      {
+        "EndUser": "EMBRAER S.A.",
+        "AddressLine1": "Estrada Municipal Euclides Martins, 2170",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Gaviao Peixoto",
+        "Country": "BRAZIL",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Department of National Defense/Armed Forces of The Philippines",
+        "AddressLine1": "Camp General Emilio Aguinaldo, Natividad",
+        "AddressLine2": "Ave",
+        "City": "Quezon City",
+        "Country": "PHILIPPINES",
+        "PostalCode": "1110",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Ecuadorian Air Force",
+        "AddressLine1": "Base Aerea Eloy Alfaro, Ala de Combate #23 Via a Jaramijo",
+        "AddressLine2": "(And all Ecuador Locations)",
+        "City": "Manta",
+        "Country": "ECUADOR",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Chilean Air Force",
+        "AddressLine1": "Comando Logistico de la FACH. Avenida Pedro Aguirre, S/N",
+        "AddressLine2": "(And all Chilean Locations)",
+        "City": "Los Cerrilos",
+        "Country": "CHILE",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "ENAER – EMPRESA NACIONAL DE AERONAUTICA DE CHILE",
+        "AddressLine1": "Gran Avenida Jose Miguel Carrera, 11087",
+        "AddressLine2": "(And all Chilean Locations)",
+        "City": "Santiago",
+        "Country": "CHILE",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Dominican Republic Air Force - FAD",
+        "AddressLine1": "Directoria de Proyectos Y Programas, Base Aerea De San Isidro",
+        "AddressLine2": "(And all Dominican Republic Locations)",
+        "City": "Santo Domingo Este",
+        "Country": "DOMINICAN REPUBLIC",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Colombian Air Force",
+        "AddressLine1": "Ministerio de Defensa Nacional Grupo Contratacion Estatal",
+        "AddressLine2": "(And all Columbian Locations)",
+        "City": "Bogota",
+        "Country": "COLOMBIA",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Brazilian Air Force",
+        "AddressLine1": "Ministerio da Defesa, Comando da Aeronautica",
+        "AddressLine2": "Esplanada dos Ministerios, Bloco M, Anexo A, 2 Andar",
+        "City": "Brasília",
+        "Country": "BRAZIL",
+        "PostalCode": "70045-900",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Ministry Of Defense Of The Republic Of Indonesia",
+        "AddressLine1": "Jalan Medan Merdeka Barat, No. 13 – 14",
+        "AddressLine2": "(And all Indonesian Locations)",
+        "City": "Jakarta Pusat",
+        "Country": "INDONESIA",
+        "PostalCode": "10110",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "FANA - Forca Aerea na Foreign End-user*",
+        "AddressLine1": "Rua Augusto Tadeu de Bastos – ex-Quartel General da Força Aerea Nacional",
+        "AddressLine2": "(And all Angolian Locations)",
+        "City": "Bairro Maianga",
+        "Country": "ANGOLA",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Governement of The Islamic Republic Of Mauritania",
+        "AddressLine1": "Zone Aeroport Internation de Nouakchott",
+        "AddressLine2": "(And all Mauritania Locations)",
+        "City": "Nouakchott",
+        "Country": "MAURITANIA",
+        "PostalCode": "BP 208",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Estado-Portuguese Air Force (FAP)",
+        "AddressLine1": "Portug Amado N 1 Av. da Força Aerea Portuguesa",
+        "AddressLine2": "(And all Portuguese Locations)",
+        "City": "",
+        "Country": "PORTUGAL",
+        "PostalCode": "2614-506",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "The Ministry of Defense of Turkmenistan",
+        "AddressLine1": "Galkynysh street, 4",
+        "AddressLine2": "(And all Turkmenistan Locations)",
+        "City": "Ashgabat",
+        "Country": "TURKMENISTAN",
+        "PostalCode": "744000",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Fuerza Aerea de Paraguay",
+        "AddressLine1": "Avda. Ciudad General Jose Elizardo Aquino, 1792",
+        "AddressLine2": "(And all Paraguay Republic Locations)",
+        "City": "Luque",
+        "Country": "PARAGUAY",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Fuerza Aerea de Uruguay",
+        "AddressLine1": "Av. Pedro de Mendoza, 5553",
+        "AddressLine2": "(And all Uruguay Locations)",
+        "City": "Montevideo",
+        "Country": "URUGUAY",
+        "PostalCode": "5553",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR & SEA SAS",
+        "AddressLine1": "19-23 Chemin des Petits Marais",
+        "AddressLine2": "(And all French Locations)",
+        "City": "Gennevilliers",
+        "Country": "FRANCE",
+        "PostalCode": "92230",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR & SEA SAS",
+        "AddressLine1": "3 rue du Remblai – Zone cargo 4",
+        "AddressLine2": "(And all French Locations)",
+        "City": "Tremblay",
+        "Country": "FRANCE",
+        "PostalCode": "93290",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR & SEA LTD",
+        "AddressLine1": "Unit 1, Polar Park, Bath Road",
+        "AddressLine2": "(And all UK Locations)",
+        "City": "Heathrow",
+        "Country": "UNITED KINGDOM",
+        "PostalCode": "UB7 0EX",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR & SEA GMBH",
+        "AddressLine1": "Gruener Deich 1",
+        "AddressLine2": "(And all German Locations)",
+        "City": "Hamburg",
+        "Country": "GERMANY, FEDERAL REP",
+        "PostalCode": "20097",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "YEHUD AMIT IT HAZAN BERGER L - COO EXPORT AIR AND SEA",
+        "AddressLine1": "AMIT Building, Airport City, Ben Gurion Airport",
+        "AddressLine2": "(And all Israeli Locations)",
+        "City": "Tel Aviv",
+        "Country": "ISRAEL",
+        "PostalCode": "70100",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "The A M IT GROUP",
+        "AddressLine1": "44 Hama'ayan Street",
+        "AddressLine2": "(And all Israeli Locations)",
+        "City": "Modi'in",
+        "Country": "ISRAEL",
+        "PostalCode": "7173000",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV SPA",
+        "AddressLine1": "Via Dante Alighieri,13 4",
+        "AddressLine2": "(And all Italian Locations)",
+        "City": "Pioltello",
+        "Country": "ITALY",
+        "PostalCode": "20096",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR & SEA NV",
+        "AddressLine1": "Industriezone Puurs--Sint Amands Schoonmansveld 40",
+        "AddressLine2": "(And all Belgium Locations)",
+        "City": "Puurs",
+        "Country": "BELGIUM",
+        "PostalCode": "BE-2870",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR AND SEA LDA",
+        "AddressLine1": "Zona Industrial do Cabo Castanheira do Ribatejo",
+        "AddressLine2": "(And all Portuguese Locations)",
+        "City": "Lisboa",
+        "Country": "PORTUGAL",
+        "PostalCode": "2600-695",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV TRANSITARIO S, LDA",
+        "AddressLine1": "Rua Campo do Martelo, 319",
+        "AddressLine2": "(And all Portugal Locations)",
+        "City": "Pinheiro",
+        "Country": "PORTUGAL",
+        "PostalCode": "4485-000",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DSV AIR & SEA Inc",
+        "AddressLine1": "Driver Road unit 4",
+        "AddressLine2": "(And all Canadian Locations)",
+        "City": "Brampton",
+        "Country": "CANADA",
+        "PostalCode": "L6T 5V2",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "SERVI LOGISTICA LTDA.",
+        "AddressLine1": "Avenida Moema, 877 – Indianopolis",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "04077-023",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Schenker do Brasil Transportes Internacionais LTDA.",
+        "AddressLine1": "Rua Geraldo Flausino Gomes, 78",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "04575-093",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Transportadora Aquariun LTDA.",
+        "AddressLine1": "Rua Marginal Botucatu – SP",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Botucatu",
+        "Country": "BRAZIL",
+        "PostalCode": "18606-550",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DHL Express (Brazil) LTDA.",
+        "AddressLine1": "Avenida Santa Marina, 1660-Lapa",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "SCHENKER S.A.",
+        "AddressLine1": "37 route principale du port CE 214",
+        "AddressLine2": "(And all French Locations)",
+        "City": "Gennevilliers",
+        "Country": "FRANCE",
+        "PostalCode": "F-92 637",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DB SCHENKER LOGISTICS KOREA,
+        "AddressLine1": "Airport Logistics Park G3 block, 97-49 Gonghangdong-ro 296 beon-gil, Junggu",
+        "AddressLine2": "(And all South Korean Locations)",
+        "City": "Incheon",
+        "Country": "KOREA, REPUBLIC OF (SOUTH KOREA)",
+        "PostalCode": "22379",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DHL Express Sort Centre Paris",
+        "AddressLine1": "Sort centre, 9 Rue du Cdt d Estienne d Orves ZAC du parc des Chanteraines",
+        "AddressLine2": "(And all French Locations)",
+        "City": "Villeneuve La Garenne",
+        "Country": "FRANCE",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "UPS do Brasil Remessas Expresso LTDA",
+        "AddressLine1": "Rua Dom Aguirre, nº554-Jardim Marajoara",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "04671245",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "FEDEX Express Corporation",
+        "AddressLine1": "Avenida das Naçoes Unidas, nº17891-1º andar",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Phenix Transporte de Cargas LTDA.",
+        "AddressLine1": "Avenida Educador Paulo Freire, 111- Parque Novo Mundo",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "02187-110",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Master Freight Transportes Internacionais LTDA.",
+        "AddressLine1": "Alameda dos Jurupis, 452-Conj. 71 - Bloco A- Indianopolis",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "04088-901",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "PGL Prime Agenciamento de Carga LTDA.",
+        "AddressLine1": "Av. Dr. Lino de Moraes Leme, 1138-1 Andar-Vila Paulista ",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "04360-000",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "M & K Assessoria, Exportadora, Importadora LTDA.",
+        "AddressLine1": " Rua Jacquey, 163-3 ANDAR-Vila Helena ",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Bernardo do Campo-SP",
+        "Country": "BRAZIL",
+        "PostalCode": "09634-000",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Expeditors Internacional do Brasil LTDA.",
+        "AddressLine1": "Av. Jose de Souza Campos, 575 13092-106, Bairro Cambui",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Campinas",
+        "Country": "BRAZIL",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "Vila Enterprise",
+        "AddressLine1": "RUA Alvorada, 1289-3º andar",
+        "AddressLine2": "(And all Brazilian Locations)",
+        "City": "Sao Paulo- SP",
+        "Country": "BRAZIL",
+        "PostalCode": "04550-004",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "KUEHN E + NAGEL S.A.S",
+        "AddressLine1": "Avenida Calle 26, 106-39, Piso 4",
+        "AddressLine2": "(And all Columbian Locations)",
+        "City": "Bogota",
+        "Country": "COLOMBIA",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "SUNRISE CARGO S.A.",
+        "AddressLine1": "Calle 46 A No 82-54 Porteria 2, Interior 8",
+        "AddressLine2": "(And all Columbian Locations)",
+        "City": "Bogota",
+        "Country": "COLOMBIA",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "KUEHN E + NAGEL LTDA",
+        "AddressLine1": "Av. Providencia 2331 Of. 301 And 302",
+        "AddressLine2": "(And all Chilean Locations)",
+        "City": "Santiago",
+        "Country": "CHILE",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DB SCHENKER LOGISTICS IN CHILE",
+        "AddressLine1": "General del Canto 421, Piso 3",
+        "AddressLine2": "(And all Chilean Locations)",
+        "City": "Santiago",
+        "Country": "CHILE",
+        "PostalCode": "7500588",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "KUEHN E + NAGEL S.A.",
+        "AddressLine1": "Av. Irlanda E10-16 Y Republica Del Salvador",
+        "AddressLine2": "(And all Ecuador Locations)",
+        "City": "Quito",
+        "Country": "ECUADOR",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "SERVICIOS AEREOS Y MARITIMOS INTERNACIONALES SA (SAMISA)",
+        "AddressLine1": "Parque Empresarial Colon Edificio Corporativo #2 Piso 2 Oficina # 204",
+        "AddressLine2": "(And all Ecuador Locations)",
+        "City": "Guayaquil",
+        "Country": "ECUADOR",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "CARIBETRANS, S.A.|BASC CERTIFIED DOMS",
+        "AddressLine1": "Calle Jose Gabriel Garcia No. 8 Apartado Postal DQ00003",
+        "AddressLine2": "(And all Dominican Republic Locations)",
+        "City": "Santo Domingo",
+        "Country": "DOMINICAN REPUBLIC",
+        "PostalCode": "1713",
+        "TelephoneOrFax": null
+      },
+      {
+        "EndUser": "DB SCHENKER ",
+        "AddressLine1": "Av. 27 de Febrero Esq. Tiradentes, Plaza Merengue Local 102",
+        "AddressLine2": "(And all Dominican Republic Locations)",
+        "City": "Santo Domingo",
+        "Country": "DOMINICAN REPUBLIC",
+        "PostalCode": null,
+        "TelephoneOrFax": null
+      }
+    ],
+    "SpecificEndUse": {
+      "EndUse": "5344-00-1 Valve is used as a component of the anti-icing air system. Valve is used to control the flow of engine bleed air within the anti-icing system."
+    },
+    "ExportItemInformation": [
+      {
+        "ExportItem": "Export Item #1",
+        "ECCN": "9A610",
+        "APP": null,
+        "ProductModelNumber": "5344-00-1",
+        "CCATSNumber": null,
+        "Quantity": 1,
+        "Units": "each",
+        "UnitPrice": "$5995",
+        "TotalPrice": "$5995",
+        "Manufacturer": "Aero Fluid Products",
+        "TechnicalDescription": "5344-00-1 Normally closed 1.5” shutoff valve that is solenoid operated. There is also a switch to indicate valve position."
+      },
+      {
+        "ExportItem": "Export Item #2",
+        "ECCN": "9E610",
+        "APP": null,
+        "ProductModelNumber": "Technology",
+        "CCATSNumber": null,
+        "Quantity": 1,
+        "Units": "Lot",
+        "UnitPrice": "$1",
+        "TotalPrice": "$1",
+        "Manufacturer": "Aero Fluid Products",
+        "TechnicalDescription": "The 9E610 Technology to be provided to Embraer is required to support the design, installation, maintenance, and repair of the 5344-00-1. The Information may be in any tangible or intangible form, such as written or oral communications, drawings, photographs, engineering designs and specifications, computer-aided design files, manuals or documentation, electronic media or information revealed through visual inspection."
+      }
+    ],
+    "TotalApplicationDollarValue": "$5,996.00",
+    "AdditionalInformation": {
+      "Information": "The remainder of the Intermediate Consignees are in Block 19."
+    },
+    "DocumentsAttachedToApplication": [
+      {
+        "Title": "Embraer End User Statement",
+        "Author": "Embraer S.A.",
+        "DocumentType": "Import/End-User Certificate",
+        "View": "Copy"
+      },
+      {
+        "Title": "AFP0080",
+        "Author": "Zeljko Tolo",
+        "DocumentType": "Letter of Explanation",
+        "View": "Letter of Explanation"
+      },
+      {
+        "Title": "5344-00-1 Acceptance Test Report",
+        "Author": "Aero Fluid Products",
+        "DocumentType": "Tech. Specs.",
+        "View": null
+      },
+      {
+        "Title": "5344-00-1 Drawing",
+        "Author": "Aero Fluid Products",
+        "DocumentType": "Tech. Specs.",
+        "View": null
+      }
+    ],
+    "SignerInformation": {
+      "Name": "Z.TOLO",
+      "Title": "Dir of Comp",
+      "Email": "ztolo@aerofp.com"
+    }
+  }
+}
+```
+​

@@ -1,0 +1,142 @@
+```json
+{
+  "Status": "COMPLETED - APPROVED W/CONDITIONS",
+  "ContactInformation": {
+    "ReferenceNumber": "SLV0530",
+    "ContactPerson": {
+      "FirstName": "Shelley",
+      "LastName": "Vybiral"
+    },
+    "TelephoneNumber": "6302003543",
+    "FaxNumber": "",
+    "Email": "shelley.vybiral@cmcelectronics.us",
+    "CreationDate": "05/30/2025",
+    "TypeOfApplication": "Export License Application"
+  },
+  "DocumentChecklist": {
+    "DocumentsSubmittedWithApplication": [
+      "Export Items (BIS-748P-A)",
+      "Import/End-User Certificate"
+    ],
+    "DocumentsOnFileWithApplicant": null
+  },
+  "LicenseInformation": {
+    "SpecialPurpose": "",
+    "ResubmissionACN": "",
+    "ReplacementLicenseNumber": "",
+    "ImportCertificateCountry": "",
+    "ImportCertificateNumber": ""
+  },
+  "ApplicantInformation": {
+    "CIN": "C702375",
+    "Applicant": "CMC Electronics Aurora, LLC",
+    "Address": {
+      "Address1": "84 N. Dugan Road",
+      "Address2": "",
+      "City": "Sugar Grove",
+      "Country": "UNITED STATES",
+      "StateProvince": "Illinois",
+      "PostalCode": "60554"
+    },
+    "EIN": "363503592"
+  },
+  "OtherPartyInformation": {
+    "OtherPartyID": "",
+    "OtherParty": "",
+    "Address": {
+      "Address1": "",
+      "Address2": "",
+      "City": "",
+      "Country": "",
+      "StateProvince": "",
+      "PostalCode": ""
+    },
+    "TelephoneOrFax": ""
+  },
+  "PurchaserInformation": {
+    "Purchaser": "PILATUS AIRCRAFT LIMITED",
+    "Address": {
+      "Address1": "Pilatusstrasse 1",
+      "Address2": "",
+      "City": "STANS",
+      "Country": "SWITZERLAND",
+      "StateProvince": "",
+      "PostalCode": "6370"
+    },
+    "TelephoneOrFax": ""
+  },
+  "IntermediateConsigneeInformation": {
+    "IntermediateConsignee": "Hellmann Worldwide Logistics AG",
+    "Address": {
+      "Address1": "Steinackerstrasse 28",
+      "Address2": "",
+      "City": "Kloten",
+      "Country": "SWITZERLAND",
+      "StateProvince": "ZH",
+      "PostalCode": "8302"
+    },
+    "TelephoneOrFax": ""
+  },
+  "UltimateConsigneeInformation": {
+    "UltimateConsignee": "PILATUS AIRCRAFT LIMITED",
+    "Address": {
+      "Address1": "Pilatusstrasse 1",
+      "Address2": "",
+      "City": "STANS",
+      "Country": "SWITZERLAND",
+      "StateProvince": "",
+      "PostalCode": "6370"
+    },
+    "TelephoneOrFax": ""
+  },
+  "EndUserInformation": {
+    "EndUser": null,
+    "SpecificEndUse": "The avionics equipment subject to this license will be delivered to Pilatus Aircraft Limited for use in testing on its PC-21 trainer aircraft."
+  },
+  "ExportItemInformation": [
+    {
+      "ExportItemNumber": 1,
+      "ECCN": "9A610",
+      "APP": "",
+      "ProductModelNumber": "",
+      "CCATSNumber": "",
+      "Quantity": 1,
+      "Units": "each",
+      "UnitPrice": 4017,
+      "TotalPrice": 4017,
+      "Manufacturer": "CMC Electronics Aurora",
+      "TechnicalDescription": "(digital HUD) boresight module"
+    },
+    {
+      "ExportItemNumber": 2,
+      "ECCN": "9A610",
+      "APP": "",
+      "ProductModelNumber": "",
+      "CCATSNumber": "",
+      "Quantity": 1,
+      "Units": "each",
+      "UnitPrice": 54080,
+      "TotalPrice": 54080,
+      "Manufacturer": "CMC ELECTRONICS AURORA",
+      "TechnicalDescription": "(digital HUD) boresight tool"
+    }
+  ],
+  "TotalApplicationDollarValue": 58097.00,
+  "AdditionalInformation": "",
+  "DocumentsAttachedToApplication": [
+    {
+      "Title": "end use statement",
+      "Author": "Paolo Soldo, Pilatus Aircraft",
+      "DocumentType": "Import/End-User Certificate"
+    },
+    {
+      "Title": "po",
+      "Author": "pilatus",
+      "DocumentType": "Other"
+    }
+  ],
+  "SignerInformation": {
+    "Name": ""
+  }
+}
+```
