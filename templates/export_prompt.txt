@@ -1,0 +1,119 @@
+You are a document parser extracting structured JSON dynamically.
+
+From the following text, extract all fields and values that are present.
+Instructions :
+1. Go through text data input shared below, which is textual representation of pdf document.
+2. Understand the file structure.
+3. Input may contain checkbox fields, understand how it is represented.
+ For checklist fields:
+  - Include only the items that are marked as selected, indicated by a leading '✔', or 'n' or similar mark.
+  - Do NOT output boolean true/false flags for items.
+  - If no items are selected in a checklist, set that checklist field to null.
+  - if checkbox is under different column in table, keep it under that column name. You have follow the structure.
+4. Create json like below structure. Only populate values for only below keys in the json structure:
+    {{
+  "US Department Of Commerce": {{
+    "Form Number": "7525-V",
+    "OMB Number": "0607-0152"
+  }},
+  "US Principal Party In Interest": {{
+    "Name": "INO Therapeutics LLC",
+    "Address": {{
+      "Street": "6603 Femrite Drive",
+      "City": "Madison",
+      "State": "Wisconsin",
+      "ZIPCode": "53718",
+      "PhoneNumber": "6082263404"
+    }},
+    "EIN": "52130455745",
+    "Parties To Transaction": "Related"
+  }},
+  "Date Of Exportation": "09/17/2025",
+  "Transportation Reference No": null,
+  "Ultimate Consignee": {{
+    "Name": "Ikaria - Australia PTY, LTD",
+    "Address": {{
+      "Street": "Ground Floor, 17 Cotham Road",
+      "City": "Kew",
+      "State": "Victoria",
+      "ZIPCode": "3101",
+      "Country": "AUSTRALIA"
+    }},
+    "Consignee Type For AES": "Direct Consumer"
+  }},
+  "Intermediate Consignee": {{
+    "Name": "Ikaria - Australia PTY, LTD",
+    "Address": {{
+      "Street": "Ground Floor, 17 Cotham Road",
+      "City": "Kew",
+      "State": "Victoria",
+      "ZIPCode": "3101",
+      "Country": "AUSTRALIA"
+    }}
+  }},
+  "Forwarding Agent": {{
+    "Name": null,
+    "EIN": null
+  }},
+  "Point Of Origin Or FTZ No": "AH",
+  "Country Of Ultimate Destination": "AUSTRALIA",
+  "Loading Pier": null,
+  "Method Of Transportation": "Air",
+  "Carrier Identification Code": "0J",
+  "Shipment Reference No": "AKAES2025FL013",
+  "Exporting Carrier": "Premium Jet AG",
+  "Port Of Export": "SAN ANTONIO, TX",
+  "Entry Number": null,
+  "Hazardous Materials": "Yes",
+  "Port Of Unloading": null,
+  "Containerized": null,
+  "In Bond Code": "70",
+  "Routed Export Transaction": "Yes",
+  "Schedule B Description Of Commodities": [
+    {{
+      "HTS Number": "9030400000",
+      "Schedule B Number": "D",
+      "Quantity": "5",
+      "Unit": "NO",
+      "Value": "33.00",
+      "Weight": "560",
+      "Description": "OTHER INSTRUMENTS AND APPARATUS, SPECIALLY DESIGNED FOR TELECOMMUNICATIONS (FOR EXAMPLE, CROSS-TALK METERS, GAIN MEASURING INSTRUMENTS ETC)",
+      "ECCN": "EAR99",
+      "SerialNo": "21MCX00001",
+      "License Exception": "NLR"
+    }}
+  ],
+  "Page Total": "560",
+  "License No Or License Exception Symbol Authorization": "NLR",
+  "ECCN": "EAR99",
+  "Total Value": "560",
+  "Authorized Officer Or Employee": {{
+    "First Name": "Akhilesh1",
+    "Last Name": "Singh1"
+  }},
+  "Certification": {{
+    "Signature": "Confidential when located, shall be exempt from public disclosure unless the Secretary determines that such exemption would be contrary to the national interest (Title 13, Chapter 9, Section 301 (g)).",
+    "Title": "Export Officer (CORP)",
+    "Date": "09/17/2025",
+    "Authentication": "asdc",
+    "Telephone": "7827198451",
+    "Email": "aksingh@descartes.com"
+  }},
+  "Default": {{
+    "Reference Number": "abc123123"
+  }}
+}}
+
+Group related fields logically.
+
+Split full names into 'FirstName' and 'LastName' if possible.
+Output valid JSON only, with no explanation or extra text.
+
+Text to parse is given below inside <doc> tags:
+<docs>
+ {input_data}
+</docs>
+
+Respond ONLY with valid JSON. Do not include any explanations or 
+other text or formatting before or after the JSON object.
+Enclose final response inside <text></text> tags

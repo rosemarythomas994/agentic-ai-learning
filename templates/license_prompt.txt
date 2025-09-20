@@ -1,0 +1,147 @@
+You are a document parser extracting structured JSON dynamically.
+
+From the following text, extract all fields and values that are present.
+Instructions :
+1. Go through text data input shared below, which is textual representation of pdf document.
+2. Understand the file structure.
+3. Input may contain checkbox fields, understand how it is represented.
+ For checklist fields:
+  - Include only the items that are marked as selected, indicated by a leading '✔', or 'n' or similar mark.
+  - Do NOT output boolean true/false flags for items.
+  - If no items are selected in a checklist, set that checklist field to null.
+  - if checkbox is under different column in table, keep it under that column name. You have follow the structure.
+4. Create json like below structure. Only populate values for below keys in the json structure:
+    {{
+  "Status": "",
+  "Contact Information": {{
+    "Reference Number": "Null",
+    "Contact Person": {{
+      "First Name": "Null",
+      "Last Name": "Null"
+    }},
+    "Telephone Number": "Null",
+    "Fax Number": "Null",
+    "Email": "Null",
+    "Creation Date": "Null",
+    "Type Of Application": "Null"
+  }},
+  "Document Checklist": {{
+    "Documents Submitted With Application": [],
+    "Documents On File With Applicant": null
+  }},
+  "License Information": {{
+    "Special Purpose": "Null",
+    "Resubmission ACN": "Null",
+    "Replacement License Number": "Null",
+    "Import Certificate Country": "Null",
+    "Import Certificate Number": "Null"
+  }},
+  "Applicant Information": {{
+    "CIN": "Null",
+    "Applicant": "Null",
+    "Address": {{
+      "Address 1": "Null",
+      "Address 2": "Null",
+      "City": "Null",
+      "Country": "Null",
+      "State Province": "Null",
+      "Postal Code": "Null"
+    }},
+    "EIN": ""
+  }},
+  "Other Party Information": {{
+    "Other Party ID": "Null",
+    "Other Party": "Null",
+    "Address": {{
+      "Address 1": "Null",
+      "Address 2": "Null",
+      "City": "Null",
+      "Country": "Null",
+      "State Province": "Null",
+      "Postal Code": "Null"
+    }},
+    "Telephone Or Fax": "Null"
+  }},
+  "Purchaser Information": {{
+    "Purchaser": "Null",
+    "Address": {{
+      "Address 1": "Null",
+      "Address 2": "Null",
+      "City": "Null",
+      "Country": "Null",
+      "State Province": "Null",
+      "Postal Code": "Null"
+    }},
+    "Telephone Or Fax": "Null"
+  }},
+  "Intermediate Consignee Information": {{
+    "Intermediate Consignee": "Null",
+    "Address": {{
+      "Address 1": "Null",
+      "Address 2": "Null",
+      "City": "Null",
+      "Country": "Null",
+      "State Province": "Null",
+      "Postal Code": "Null"
+    }},
+    "Telephone Or Fax": "Null"
+  }},
+  "Ultimate Consignee Information": {{
+    "Ultimate Consignee": "Null",
+    "Address": {{
+      "Address 1": "Null",
+      "Address 2": "Null",
+      "City": "Null",
+      "Country": "Null",
+      "State Province": "Null",
+      "Postal Code": "Null"
+    }},
+    "Telephone Or Fax": "Null"
+  }},
+  "End User Information": {{
+    "End User": null,
+    "Specific End Use": "Null"
+  }},
+  "Export Item Information": [
+    {{
+      "Export Item Number": 1,
+      "ECCN": "Null",
+      "APP": "Null",
+      "Product Model Number": "Null",
+      "CCATS Number": "Null",
+      "Quantity": Null,
+      "Units": "Null",
+      "Unit Price": Null,
+      "Total Price": Null,
+      "Manufacturer": "Null",
+      "Technical Description": "Null"
+    }}
+  ],
+  "Total Application Dollar Value": Null,
+  "Additional Information": "Null",
+  "Documents Attached To Application": [
+    {{
+      "Title": "Null",
+      "Author": "Null",
+      "Document Type": "Null"
+    }}
+  ],
+  "Signer Information": {{
+    "Name": "Null"
+  }}
+}}
+
+
+Group related fields logically.
+
+Split full names into 'FirstName' and 'LastName' if possible.
+Output valid JSON only, with no explanation or extra text.
+
+Text to parse is given below inside <doc> tags:
+<docs>
+ {input_data}
+</docs>
+
+Respond ONLY with valid JSON. Do not include any explanations or 
+other text or formatting before or after the JSON object.
+Enclose final response inside <text></text> tags

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>File to JSON</title>
+</head>
+<body>
+    <h2>Upload Files to Extract JSON</h2>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="files" multiple
+               accept=".pdf,.png,.jpg,.jpeg,.txt,.docx"><br><br>
+
+        <label for="extract_type">Extraction Type:</label>
+        <select name="extract_type" id="extract_type">
+            <option value="export">Export</option>
+            <option value="license">License</option>
+        </select><br><br>
+
+        <input type="submit" value="Upload and Get Result">
+    </form>
+</body>
+</html>

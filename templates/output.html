@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PDF Extraction Results</title>
+</head>
+<body>
+    <h2>Extraction Results</h2>
+    {% for item in results %}
+        <div style="border:1px solid #ccc; margin-bottom:20px; padding:10px;">
+            <h3>{{ item.filename }}</h3>
+            <strong>OCR Preview:</strong>
+            <pre>{{ item.ocr_preview }}</pre>
+            <strong>LLM Result:</strong>
+            <pre>{{ item.llm_result }}</pre>
+        </div>
+    {% endfor %}
+    <a href="/">&#8592; Upload More PDFs</a>
+</body>
+</html>

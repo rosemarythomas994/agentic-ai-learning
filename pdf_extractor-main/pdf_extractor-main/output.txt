@@ -1,0 +1,293 @@
+
+
+===== PAGE 1 =====
+
+= An official website of the United States government Here's how you know v
+
+Bureau of Industry and Security
+
+U.S. Department of Commerce
+
+ 
+
+Export License Application _ status (¢ompzetes=xpPROVEDW/CONDITIONS)
+
+Contact Information
+
+Reference Number
+SLV0530
+
+1. Contact Person (First Name, Last Name)
+Shelley Vybiral
+
+2. Telephone Number 3. Fax Number
+6302003543 -
+
+Email
+shelley.vybiral@cmcelectronics.us
+
+4. Creation Date
+05/30/2025
+
+5. Type of Application
+Export License Application
+
+Document Checklist
+
+6. Documents submitted with application 7. Documents on file with applicant
+Export Items (BIS-748P-A) (_) Bis-711
+
+CJ End Users (BIS-748P-B) CJ Letter of Assurance
+
+CJ BIS-711 CJ Import/End-User Certificate
+Import/End-User Certificate CJ Nuclear Certification
+
+Technical Specification
+C) P Other
+CJ Letter of Explanation -
+
+(_) Foreign Availability
+
+Other
+
+
+===== PAGE 2 =====
+
+purchase order
+
+License Information
+
+9. Special Purpose
+
+10. Resubmission ACN
+
+13. Import Certificate Country
+
+Applicant Information
+14. CIN (Applicant ID)
+C702375
+
+Address 1
+84 N. Dugan Road
+
+City
+Sugar Grove
+
+State/Province
+Illinois
+
+EIN
+363503592
+
+Other Party Information
+15. Other Party ID
+
+Address 1
+
+11. Replacement License Number
+
+Import Certificate Number
+
+Applicant
+CMC Electronics Aurora, LLC
+
+Address 2
+
+Country
+UNITED STATES
+
+Postal Code
+60554
+
+Other Party
+
+Address 2
+
+
+===== PAGE 3 =====
+
+City Country
+
+State/Province Postal Code
+
+Telephone or Fax
+
+a) If you are a First Party submitter and will be the Principal Party in Interest using this
+license, note that, in the electronic environment, this block does not function to send a license
+to any other interested party, and no other interested party will appear on the license.
+
+If you wish another party to be authorized to discuss this license, please enter the information
+in Block 24 (Additional Information) and name specific individuals.
+
+b) If you need to add any party to be authorized under the license, but for whom there is no
+available field (such as a second Intermediate Consignee), list that party in Block 19 (End User
+Information), even if they are not an End User, and explain their role in the transaction in Block
+24 (Additional Information), or in an attached Letter of Explanation.
+
+Purchaser Information
+16. Purchaser
+
+PILATUS AIRCRAFT LIMITED
+
+Address 1 Address 2
+Pilatusstrasse 1 -
+
+City Country
+
+STANS SWITZERLAND
+State/Province Postal Code
+
+- 6370
+
+Telephone or Fax
+
+Intermediate Consignee Information
+
+17. Intermediate Consignee
+Hellmann Worldwide Logistics AG
+
+
+===== PAGE 4 =====
+
+Address 1
+Steinackerstrasse 28
+
+City
+Kloten
+
+State/Province
+ZH
+
+Telephone or Fax
+
+Ultimate Consignee Information
+
+18. Ultimate Consignee
+PILATUS AIRCRAFT LIMITED
+
+Address 1
+Pilatusstrasse 1
+
+City
+STANS
+
+State/Province
+
+Telephone or Fax
+
+End User Information
+
+19.
+
+Address Address
+End . .
+
+Line 1 Line 2
+User
+
+No items found
+
+City Country
+
+Address 2
+
+Country
+SWITZERLAND
+
+Postal Code
+8302
+
+Address 2
+
+Country
+SWITZERLAND
+
+Postal Code
+6370
+
+Postal
+Code
+
+Telephone
+or Fax
+
+
+===== PAGE 5 =====
+
+Specific End Use
+
+21. Specific End Use
+
+The avionics equipment subject to this license will be delivered to Pilatus Aircraft
+
+Limited for use in testing on its PC-21 trainer aircraft.
+
+Export Item Information
+
+22. Export Item #1
+
+(a) ECCN (b) APP (c) Product/Model Number
+9A610 - -
+
+(e) Quantity  (f) Units (g) Unit Price (h) Total Price
+1 each $4017 $4017
+
+(j) Technical Description
+(digital HUD) boresight module
+
+22. Export Item #2
+
+(a) ECCN (b) APP (c) Product/Model Number
+9A610 - -
+
+(e) Quantity  (f) Units (g) Unit Price (h) Total Price
+1 each $54080 $54080
+
+(j) Technical Description
+(digital HUD) boresight tool
+
+(d) CCATS Number
+
+(i) Manufacturer
+CMC Electronics
+Aurora
+
+(d) CCATS Number
+
+(i) Manufacturer
+CMC ELECTRONICS
+AURORA
+
+
+===== PAGE 6 =====
+
+Total Application Dollar Value
+
+23. Total Application Dollar Value
+$58,097.00
+
+Additional Information
+
+24. Additional Information
+
+Documents attached to application
+
+Title Author Document Type
+end use Paolo Soldo, Pilatus Import/End-User
+statement Aircraft Certificate
+po pilatus Other
+
+1of 1
+
+Signer Information
+
+Name
+S.VYBIRAL
+
+Title
+trade compliance manager
+
+Email
+shelley.vybiral@cmcelectronics.us
+
+View
