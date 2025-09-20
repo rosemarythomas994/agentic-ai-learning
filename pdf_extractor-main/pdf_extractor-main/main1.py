@@ -2,7 +2,8 @@ from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
 import json
-from your_module import extract_data_to_json  # Your existing function
+from doc_utils import extract_data_to_json  # Your existing function
+from llm_utils import call_llm
 
 # Allowed file extensions
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'txt', 'docx'}
